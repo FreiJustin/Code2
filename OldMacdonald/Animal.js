@@ -17,19 +17,23 @@ var Farm;
             this.foodamount -= 25;
             para.innerHTML = this.name + " ate their " + this.foodtype + " and has " + this.foodamount + "% left";
             _element.appendChild(para);
+            console.log(para);
             if (this.foodamount <= 0) {
-                this.refill(para);
+                this.refill(_element);
             }
         }
         refill(_element) {
             const para = document.createElement("p");
             para.innerHTML = "Old MacDonald refilled the food of " + this.name;
+            this.foodamount = 100;
             _element.appendChild(para);
+            console.log(para);
         }
         sing(_element) {
             const para = document.createElement("p");
             para.innerHTML = "Old MacDonald had a farm, E-I-E-I-O <br> And on that farm he had a " + this.type + " E-I-E-I-O <br> With a " + this.sound + " here and a " + this.sound + " there <br> " + this.sound + " here, " + this.sound + " there, " + this.sound + " everywhere <br>";
             _element.appendChild(para);
+            console.log(para);
         }
     }
     Farm.Animal = Animal;

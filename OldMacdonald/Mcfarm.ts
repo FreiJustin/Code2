@@ -1,16 +1,18 @@
 namespace Farm{
-    const text:HTMLElement= document.getElementById("text")!;
+    const singText:HTMLDivElement= <HTMLDivElement>document.getElementById("sing")!;
+    const eatText:HTMLDivElement= <HTMLDivElement>document.getElementById("eat")!;
+
     const animals:Animal[]= [];
-    let goobieWoobie:Animal = new Animal("GoobieWoobie", "squeak-squeak" , "salad", "GoopuLoopu");
-    let dog:Animal = new Animal("Dog", "bark-bark", "DogFood", "Loaf");
-    let cow:Animal = new Animal("Cow", "Moo-Moo", "grass", "Steak");
-    let pig:Animal = new Animal("Pig", "oink-oink", "BigMac", "SpareRib");
-    let donkey:Animal = new Animal("Donkey", "Iah-Iah", "Wheat", "Kong");
+    const goobieWoobie:Animal = new Animal("GoobieWoobie", "squeak-squeak" , "salad", "GoopuLoopu");
+    const dog:Animal = new Animal("Dog", "bark-bark", "DogFood", "Loaf");
+    const cow:Animal = new Animal("Cow", "Moo-Moo", "grass", "Steak");
+    const pig:Animal = new Animal("Pig", "oink-oink", "BigMac", "SpareRib");
+    const donkey:Animal = new Animal("Donkey", "Iah-Iah", "Wheat", "Kong");
 
     animals.push(goobieWoobie,dog,cow,pig,donkey);
-
+    
     for(let i:number = 0; i<animals.length; i++){
-        animals[i].sing(text);
-        animals[i].eat(text);
+        animals[i].sing(singText);
+        animals[i].eat(eatText);
     }
 }
