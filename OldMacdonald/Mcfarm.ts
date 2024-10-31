@@ -1,6 +1,7 @@
 namespace Farm{
     const singText:HTMLDivElement= <HTMLDivElement>document.getElementById("sing")!;
     const eatText:HTMLDivElement= <HTMLDivElement>document.getElementById("eat")!;
+    const daysToSimulate:number = 4;
 
     const animals:Animal[]= [];
     const goobieWoobie:Animal = new Animal("GoobieWoobie", "squeak-squeak" , "salad", "GoopuLoopu");
@@ -10,9 +11,10 @@ namespace Farm{
     const donkey:Animal = new Animal("Donkey", "Iah-Iah", "Wheat", "Kong");
 
     animals.push(goobieWoobie,dog,cow,pig,donkey);
-    
-    for(let i:number = 0; i<animals.length; i++){
-        animals[i].sing(singText);
-        animals[i].eat(eatText);
+    for(let j:number = 0; j<daysToSimulate; j++){
+        for(let i:number = 0; i<animals.length; i++){
+            animals[i].sing(singText);
+            animals[i].eat(eatText);
+        }
     }
 }
