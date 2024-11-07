@@ -4,9 +4,9 @@ var FudgeFirst;
     var f = FudgeCore;
     const nodeCube = new f.Node("Node");
     const nodeGround = new f.Node("NodeGround");
-    window.addEventListener("load", start);
+    window.addEventListener("load", handleLoad);
     let viewport;
-    function start(_event) {
+    function handleLoad(_event) {
         const canvas = document.querySelector("canvas");
         const camera = new f.ComponentCamera();
         //Cube
@@ -40,14 +40,12 @@ var FudgeFirst;
         f.Loop.addEventListener("loopFrame" /* f.EVENT.LOOP_FRAME */, update);
         f.Loop.start();
     }
-    let isJumping = false;
-    let isFalling = false;
+    let yTranslation = 0;
     function update() {
         const tSpeed = 3 / 1; //units per seconds
         const rSpeed = 360 / 3; // degrees per seconds
-        const jumpSpeed = 2 / 1;
-        const jumpTime = 1000;
-        let jumpTimer = jumpTime;
+        const jumpHeight = 2;
+        const fallSpeed = 3 / 1;
         const frameTimeInMillieSeconds = f.Loop.timeFrameGame;
         const frameTimeInSeconds = (frameTimeInMillieSeconds / 1000);
         if (f.Keyboard.isPressedOne([f.KEYBOARD_CODE.W])) {
@@ -62,28 +60,15 @@ var FudgeFirst;
         if (f.Keyboard.isPressedOne([f.KEYBOARD_CODE.A])) {
             nodeCube.mtxLocal.rotateY(-rSpeed * frameTimeInSeconds);
         }
-        //jump system
-        if (f.Keyboard.isPressedOne([f.KEYBOARD_CODE.SPACE]) && isJumping == false && isFalling == false) {
-            isJumping = true;
+        //fall system
+        if (yTranslation > 0) {
+            nodeCube.mtxLocal.translateY(-fallSpeed * frameTimeInSeconds);
+            yTranslation -= fallSpeed;
         }
-        if (isJumping == true && isFalling == false) {
-            nodeCube.mtxLocal.translateY(jumpSpeed * frameTimeInSeconds);
-            jumpTimer -= 1;
-        }
-        if (isFalling == true && isJumping == false) {
-            nodeCube.mtxLocal.translateY(-jumpSpeed * frameTimeInSeconds);
-            jumpTimer -= 1;
-        }
-        if (jumpTimer == 0) {
-            switch (isFalling) {
-                case false:
-                    isFalling = true;
-                    isJumping = false;
-                    jumpTimer = jumpTime;
-                case true:
-                    isFalling = false;
-                    jumpTimer = jumpTime;
-            }
+        // //jump system
+        if (f.Keyboard.isPressedOne([f.KEYBOARD_CODE.SPACE]) && yTranslation <= 0) {
+            nodeCube.mtxLocal.translateY(jumpHeight);
+            yTranslation = jumpHeight;
         }
         const up = f.Vector3.Y();
         viewport.camera.mtxPivot.lookAt(nodeCube.mtxWorld.translation);

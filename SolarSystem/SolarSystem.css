@@ -1,0 +1,21 @@
+
+div#description{
+    color:white;
+    position:fixed;
+    top: 60px;
+    left:30px;
+    
+}
+
+label{
+    color:aliceblue;
+    position:fixed;
+    top:10px;
+    left:60px;
+}
+
+input{
+    position: fixed;
+    top:30px;
+    left:20px;
+}
