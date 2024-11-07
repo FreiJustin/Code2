@@ -19,8 +19,8 @@ var FudgeFirst;
         const cmpMaterial = new f.ComponentMaterial(material);
         cmpMaterial.clrPrimary.set(0, 0, 1, 1);
         nodeCube.addComponent(cmpMaterial);
-        const cpmTransform = new f.ComponentTransform();
-        nodeCube.addComponent(cpmTransform);
+        const cmpTransform = new f.ComponentTransform();
+        nodeCube.addComponent(cmpTransform);
         //Ground
         const groundMesh = new f.MeshQuad("Ground");
         const cmpGround = new f.ComponentMesh(groundMesh);

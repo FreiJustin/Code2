@@ -25,8 +25,8 @@ namespace FudgeFirst {
         cmpMaterial.clrPrimary.set(0, 0, 1, 1);
         nodeCube.addComponent(cmpMaterial);
 
-        const cpmTransform: f.ComponentTransform = new f.ComponentTransform();
-        nodeCube.addComponent(cpmTransform);
+        const cmpTransform: f.ComponentTransform = new f.ComponentTransform();
+        nodeCube.addComponent(cmpTransform);
 
         //Ground
         const groundMesh: f.Mesh = new f.MeshQuad("Ground");

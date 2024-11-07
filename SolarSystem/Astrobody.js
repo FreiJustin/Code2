@@ -33,13 +33,13 @@ var Solarsystem;
             }
         }
         draw() {
-            Solarsystem.crc2.beginPath();
-            Solarsystem.crc2.moveTo(this.position.x, this.position.y);
-            Solarsystem.crc2.arc(this.position.x, this.position.y, this.size, 0, 2 * Math.PI);
-            Solarsystem.crc2.stroke();
-            Solarsystem.crc2.fillStyle = this.color;
-            Solarsystem.crc2.fill();
-            Solarsystem.crc2.closePath();
+            crc2.beginPath();
+            crc2.moveTo(this.position.x, this.position.y);
+            crc2.arc(this.position.x, this.position.y, this.size, 0, 2 * Math.PI);
+            crc2.stroke();
+            crc2.fillStyle = this.color;
+            crc2.fill();
+            crc2.closePath();
         }
         checkClick(_click, _element) {
             const difference = new Solarsystem.Vector(_click.x - this.position.x, _click.y - this.position.y);
